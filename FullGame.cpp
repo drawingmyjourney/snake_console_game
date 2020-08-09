@@ -7,7 +7,10 @@ using namespace std;
 HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 //variables needed
+//starting size of snake
 int snake_length = 1;
+//used to control sound
+bool soundon = true;
 //max size a snake can be is 100 at the moment
 int x[100];
 int y[100];
@@ -40,7 +43,14 @@ void cursor_position(int x , int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), p);
 	
 }
-
+//play sound effects
+void play_sound()
+{
+	if (soundon == true)
+	{
+		cout << "\a";
+	}
+}
 //function for spawning food at different locations;
 void spawn_food()
 {
@@ -109,7 +119,7 @@ void movement(int index)
 						if (x[index] == foodposition[0] && y[index] == foodposition[1])
 						{
 							snake_length++;
-							cout << "\a";
+							play_sound();
 							spawn_food();
 						}
 
@@ -195,7 +205,7 @@ void movement(int index)
 							if (x[index] == foodposition[0] && y[index] == foodposition[1])
 							{
 								snake_length++;
-								cout << "\a";
+								play_sound();
 								spawn_food();
 							}
 
@@ -278,7 +288,7 @@ void movement(int index)
 								if (x[index] == foodposition[0] && y[index] == foodposition[1])
 								{
 									snake_length++;
-									cout << "\a";
+									play_sound();
 									spawn_food();
 								}
 
@@ -363,7 +373,7 @@ void movement(int index)
 									if (x[index] == foodposition[0] && y[index] == foodposition[1])
 									{
 										snake_length++;
-										cout << "\a";
+										play_sound();
 										spawn_food();
 									}
 
@@ -448,7 +458,7 @@ void speed()
 					if (x[index] == foodposition[0] && y[index] == foodposition[1])
 					{
 						snake_length++;
-						cout << "\a";
+						play_sound();
 						spawn_food();
 					}
 
@@ -517,7 +527,7 @@ void speed()
 					if (x[index] == foodposition[0] && y[index] == foodposition[1])
 					{
 						snake_length++;
-						cout << "\a";
+						play_sound();
 						spawn_food();
 					}
 
@@ -586,7 +596,7 @@ void speed()
 					if (x[index] == foodposition[0] && y[index] == foodposition[1])
 					{
 						snake_length++;
-						cout << "\a";
+						play_sound();
 						spawn_food();
 					}
 
@@ -655,7 +665,7 @@ void speed()
 					if (x[index] == foodposition[0] && y[index] == foodposition[1])
 					{
 						snake_length++;
-						cout << "\a";
+						play_sound();
 						spawn_food();
 					}
 
@@ -751,6 +761,8 @@ void display()
 			cout << "  WHEN YOU LET GO THE GAME WILL CONTINUE" << endl;
 			cursor_position(42, i + 9);
 			cout << "  TO QUIT THE GAME PRESS THE ESCAPE KEY" << endl;
+			cursor_position(42, i + 10);
+			cout << "  TOGGLE THE MUSIC ON AND OFF BY PRESSING THE CONTROL KEY" << endl;
 		}
 
 		
@@ -867,7 +879,20 @@ int main()
 		{
 			break;
 		}
+
+		if (GetAsyncKeyState(VK_CONTROL))
+		{
+			if (soundon == true)
+			{
+				soundon = false;
+			}
+			else
+			{
+				soundon = true;
+			}
+		}
 	}
+
 	cursor_position(10, 10);
 	cout <<" GAME OVER!!!! "<< endl;
 	Sleep(100);
