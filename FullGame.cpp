@@ -762,7 +762,7 @@ void display()
 			cursor_position(42, i + 9);
 			cout << "  TO QUIT THE GAME PRESS THE ESCAPE KEY" << endl;
 			cursor_position(42, i + 10);
-			cout << "  TOGGLE THE MUSIC ON AND OFF BY PRESSING THE CONTROL KEY" << endl;
+			cout << "  TOGGLE THE SOUND ON AND OFF BY PRESSING THE CONTROL KEY" << endl;
 		}
 
 		
