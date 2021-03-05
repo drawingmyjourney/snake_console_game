@@ -96,7 +96,7 @@ void movement()
 				if (GetAsyncKeyState(VK_LEFT))
 				{
 					int control = 0;
-					while (GetAsyncKeyState(VK_LEFT))
+					while (GetAsyncKeyState(aVK_LEFT))
 					{
 						if (control < 1)
 						{
